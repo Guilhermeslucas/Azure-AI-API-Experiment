@@ -1,4 +1,4 @@
-import http.client, urllib.request, urllib.parse, urllib.error, base64, requests, time, json  
+import requests, json  
 
 endpoint = 'https://westus.api.cognitive.microsoft.com/vision/v1.0'  
 api_key = ''
@@ -9,7 +9,7 @@ headers = {
 }
 
 def submitImageText(image_url):
-    body = {'url':image_url}
+    body = {'url': image_url}
 
     params = {'handwriting' : 'false'}
 
