@@ -63,16 +63,14 @@ def translate(text):
     return json.loads(result.decode('utf-8'))[0]['translations'][0]['text']
 
 def get_audio(text):
-    apiKey = ""
+    apiKey = ''
 
     params = ""
     headers = {"Ocp-Apim-Subscription-Key": apiKey}
 
-    #AccessTokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
     AccessTokenHost = "westus.api.cognitive.microsoft.com"
     path = "/sts/v1.0/issueToken"
 
-    # Connect to server to get the Access Token
     print ("Connect to server to get the Access Token")
     conn = http.client.HTTPSConnection(AccessTokenHost)
     conn.request("POST", path, params, headers)
@@ -100,7 +98,6 @@ def get_audio(text):
             "X-Search-ClientID": "1ECFAE91408841A480F00935DC390960", 
             "User-Agent": "TTSForPython"}
             
-    #Connect to server to synthesize the wave
     print ("\nConnect to server to synthesize the wave")
     conn = http.client.HTTPSConnection("westus.tts.speech.microsoft.com")
     conn.request("POST", "/cognitiveservices/v1", ElementTree.tostring(body), headers)
