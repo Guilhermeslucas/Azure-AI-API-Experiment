@@ -1,5 +1,6 @@
 import requests, json, http.client, urllib.parse, uuid
 from xml.etree import ElementTree
+import pygame
 
 def submitImageText(image_url):
     endpoint = 'https://westus.api.cognitive.microsoft.com/vision/v1.0'  
@@ -110,8 +111,17 @@ def get_audio(text):
     outfile.write(data)
     conn.close()
 
+def play_audio():
+    pygame.mixer.init()
+    pygame.mixer.music.load("out10.ogg")
+    pygame.mixer.music.set_volume(1.0)
+    pygame.mixer.music.play()
+
+    while pygame.mixer.music.get_busy() == True:
+        pass
+
 if __name__ == '__main__':
-    extracted_text = submitImageText('https://i.pinimg.com/originals/b7/c4/16/b7c416f84e6ae08fd827303724874539.jpg')
+    extracted_text = submitImageText('http://d2jaiao3zdxbzm.cloudfront.net/wp-content/uploads/figure-65.png')
     text = translate(extracted_text)
     print(text)
     get_audio(text)
