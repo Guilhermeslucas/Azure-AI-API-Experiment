@@ -77,13 +77,11 @@ def get_audio(text):
     conn = http.client.HTTPSConnection(AccessTokenHost)
     conn.request("POST", path, params, headers)
     response = conn.getresponse()
-    print(response.status, response.reason)
 
     data = response.read()
     conn.close()
 
     accesstoken = data.decode("UTF-8")
-    print ("Access Token: " + accesstoken)
 
     body = ElementTree.Element('speak', version='1.0')
     body.set('{http://www.w3.org/XML/1998/namespace}lang', 'pt-BR')
@@ -104,8 +102,7 @@ def get_audio(text):
     conn = http.client.HTTPSConnection("westus.tts.speech.microsoft.com")
     conn.request("POST", "/cognitiveservices/v1", ElementTree.tostring(body), headers)
     response = conn.getresponse()
-    print(response.status, response.reason)
-
+    
     data = response.read()
 
     outfile = open('out.mp3', 'wb')
@@ -129,10 +126,12 @@ def convert_audio(audio_name):
     return output_file
 
 if __name__ == '__main__':
-    extracted_text = submitImageText('http://d2jaiao3zdxbzm.cloudfront.net/wp-content/uploads/figure-65.png')
+    #http://d2jaiao3zdxbzm.cloudfront.net/wp-content/uploads/figure-65.png
+    extracted_text = submitImageText('http://fabricjs.com/article_assets/2_7.png')
+    print('Extracted the Text. Translating...')
     text = translate(extracted_text)
-    print(text)
+    print('Translated. Getting audio...')
     file_name = get_audio(text)
+    print('Converting Audio...')
     ogg_file = convert_audio(file_name)
     play_audio(ogg_file)
-
