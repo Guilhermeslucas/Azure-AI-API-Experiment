@@ -118,10 +118,12 @@ def play_audio(audio_file):
 
     while pygame.mixer.music.get_busy() == True:
         pass
+    pygame.mixer.music.stop()
+    pygame.mixer.music.quit()
 
 def convert_audio(audio_name):
     output_file = audio_name.split('.')[0] + '.ogg'
-    command = 'ffmpeg -i ' + audio_name + ' ' + output_file
+    command = 'ffmpeg -y -i ' + audio_name + ' ' + output_file
     os.system(command)
     return output_file
 
