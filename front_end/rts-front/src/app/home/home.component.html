@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Read->Translate->Say</a>
+  <a class="navbar-brand" href="#">Read > Translate > Say</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,15 +17,15 @@
 <div class="container">
 <body>
 <h1 class="text-center">
-  Read-> Translate-> Say
+  Read > Translate > Say
 </h1>
 <form>
     <div class="form-group">
       <label for="exampleInputEmail1">Image Url</label>
-      <input class="form-control" id="imputBox" aria-describedby="inputBox" placeholder="Enter Url">
+      <input  class="form-control" id="imputBox" aria-describedby="inputBox" placeholder="Enter Url" [(ngModel)]="imageUrl"  [ngModelOptions]="{standalone: true}">
       <small id="inputBox" class="form-text text-muted">Put here the url you want to process.</small>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
   </form>
 </body>
 </div>
