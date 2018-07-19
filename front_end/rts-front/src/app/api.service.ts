@@ -9,13 +9,15 @@ const SUBMIT_ENDPOINT = environment.submitEndpoint;
 
 @Injectable()
 export class ApiService {
+  public data: Object;
+  constructor(private http: Http) {
+    this.data = {};
+   }
 
-  constructor(private http: Http) { }
-
-  public submitImage(image_link: string) {
-    console.log('Entrei aqui');
+  public submitImage(image_link: string): Observable<any> {
+    this.data['url'] = image_link;
     return this.http
-    .post(API_URL + SUBMIT_ENDPOINT, image_link)
+    .post(API_URL + SUBMIT_ENDPOINT, this.data)
     .map(response => {
       return response;
     });
