@@ -13,7 +13,6 @@ def hello():
 
 @app.route("/api/submit", methods=['POST']) 
 def process():
-    os.system('rm -rf out*')
     request_data = request.get_json(force=True)
     read_translate_say(request_data['url'])
     return 'Success' 
