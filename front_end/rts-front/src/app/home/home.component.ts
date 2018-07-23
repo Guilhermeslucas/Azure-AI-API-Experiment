@@ -8,10 +8,12 @@ import { ApiService } from '../api.service';
 })
 export class HomeComponent implements OnInit {
   public imageUrl: string;
+  public jobDone: boolean;
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.imageUrl = '';
+    this.jobDone = true;
   }
 
   onSubmit() {
