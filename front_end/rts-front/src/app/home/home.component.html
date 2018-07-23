@@ -25,10 +25,10 @@
       <input  class="form-control" id="imputBox" aria-describedby="inputBox" placeholder="Enter Url" [(ngModel)]="imageUrl"  [ngModelOptions]="{standalone: true}">
       <small id="inputBox" class="form-text text-muted">Put here the url you want to process.</small>
     </div>
+    <div class="status-message" *ngIf="!jobDone">
+    Loading... Please Wait!
+  </div>
     <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
   </form>
-  <div class="status-message">
-    
-  </div>
 </body>
 </div>

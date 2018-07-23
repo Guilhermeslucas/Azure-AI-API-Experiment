@@ -17,8 +17,9 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
+    this.jobDone = false;
     this.apiService.submitImage(this.imageUrl)
-      .subscribe(response => console.log(response));
+      .subscribe(response => this.jobDone = true);
   }
 
 }
