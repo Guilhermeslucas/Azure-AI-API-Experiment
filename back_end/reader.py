@@ -105,10 +105,12 @@ def get_audio(text):
 
     data = response.read()
 
-    outfile = open('out.mp3', 'wb')
+    file_name = str(uuid.uuid4()) + '.mp3'
+
+    outfile = open(file_name, 'wb')
     outfile.write(data)
     conn.close()
-    return 'out.mp3'
+    return file_name
 
 def play_audio(audio_file):
     pygame.mixer.init()
