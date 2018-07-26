@@ -14,8 +14,8 @@ def hello():
 @app.route("/api/submit", methods=['POST']) 
 def process():
     request_data = request.get_json(force=True)
-    read_translate_say(request_data['url'])
-    return 'Success' 
+    text = read_translate_say(request_data['url'])
+    return text
  
 if __name__ == "__main__": 
 	app.run(host='0.0.0.0', port=5000)

@@ -132,15 +132,9 @@ def read_translate_say(image_url):
     extracted_text = submitImageText(image_url)
     print('Extracted the Text. Translating...')
     text = translate(extracted_text)
-    print('Translated. Getting audio...')
-    file_name = get_audio(text)
-    print('Converting Audio...')
-    ogg_file = convert_audio(file_name)
-    play_audio(ogg_file)
+    return text
 
 if __name__ == '__main__':
-    #'http://fabricjs.com/article_assets/2_7.png'
-    #http://d2jaiao3zdxbzm.cloudfront.net/wp-content/uploads/figure-65.png
     extracted_text = submitImageText('http://fabricjs.com/article_assets/2_7.png')
     print('Extracted the Text. Translating...')
     text = translate(extracted_text)
