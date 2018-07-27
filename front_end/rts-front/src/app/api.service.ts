@@ -19,6 +19,7 @@ export class ApiService {
     return this.http
     .post(API_URL + SUBMIT_ENDPOINT, this.data)
     .map(response => {
+      console.log(response);
       return response;
     });
   }
