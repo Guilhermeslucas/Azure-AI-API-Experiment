@@ -24,6 +24,8 @@
     "bootstrap": "^4.1.2",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
+    "speak-tts": "^1.1.0",
+    "tts-js": "^1.0.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

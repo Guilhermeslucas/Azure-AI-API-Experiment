@@ -64,70 +64,6 @@ def translate(text):
 
     return json.loads(result.decode('utf-8'))[0]['translations'][0]['text']
 
-def get_audio(text):
-    apiKey = ''
-
-    params = ""
-    headers = {"Ocp-Apim-Subscription-Key": apiKey}
-
-    AccessTokenHost = "westus.api.cognitive.microsoft.com"
-    path = "/sts/v1.0/issueToken"
-
-    print ("Connect to server to get the Access Token")
-    conn = http.client.HTTPSConnection(AccessTokenHost)
-    conn.request("POST", path, params, headers)
-    response = conn.getresponse()
-
-    data = response.read()
-    conn.close()
-
-    accesstoken = data.decode("UTF-8")
-
-    body = ElementTree.Element('speak', version='1.0')
-    body.set('{http://www.w3.org/XML/1998/namespace}lang', 'pt-BR')
-    voice = ElementTree.SubElement(body, 'voice')
-    voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'pt-BR')
-    voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Female')
-    voice.set('name', 'Microsoft Server Speech Text to Speech Voice (pt-BR, HeloisaRUS)')
-    voice.text = text
-
-    headers = {"Content-type": "application/ssml+xml", 
-            "X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm",
-            "Authorization": "Bearer " + accesstoken, 
-            "X-Search-AppId": "07D3234E49CE426DAA29772419F436CA", 
-            "X-Search-ClientID": "1ECFAE91408841A480F00935DC390960", 
-            "User-Agent": "TTSForPython"}
-            
-    print ("\nConnect to server to synthesize the wave")
-    conn = http.client.HTTPSConnection("westus.tts.speech.microsoft.com")
-    conn.request("POST", "/cognitiveservices/v1", ElementTree.tostring(body), headers)
-    response = conn.getresponse()
-
-    data = response.read()
-
-    file_name = str(uuid.uuid4()) + '.mp3'
-
-    outfile = open(file_name, 'wb')
-    outfile.write(data)
-    conn.close()
-    return file_name
-
-def play_audio(audio_file):
-    pygame.mixer.init()
-    pygame.mixer.music.load(audio_file)
-    pygame.mixer.music.set_volume(1.0)
-    pygame.mixer.music.play()
-
-    while pygame.mixer.music.get_busy() == True:
-        pass
-    pygame.mixer.music.stop()
-
-def convert_audio(audio_name):
-    output_file = audio_name.split('.')[0] + '.ogg'
-    command = 'ffmpeg -y -i ' + audio_name + ' ' + output_file
-    os.system(command)
-    return output_file
-
 def read_translate_say(image_url):
     extracted_text = submitImageText(image_url)
     print('Extracted the Text. Translating...')
@@ -138,8 +74,3 @@ if __name__ == '__main__':
     extracted_text = submitImageText('http://fabricjs.com/article_assets/2_7.png')
     print('Extracted the Text. Translating...')
     text = translate(extracted_text)
-    print('Translated. Getting audio...')
-    file_name = get_audio(text)
-    print('Converting Audio...')
-    ogg_file = convert_audio(file_name)
-    play_audio(ogg_file)
