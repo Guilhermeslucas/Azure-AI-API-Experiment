@@ -9,7 +9,7 @@ CORS(app)
 
 @app.route("/") 
 def hello(): 
-	return "Hello World! I'm the updated version!" 
+	return "Hello World! I'm the updated version 3!" 
 
 @app.route("/api/submit", methods=['POST']) 
 def process():
