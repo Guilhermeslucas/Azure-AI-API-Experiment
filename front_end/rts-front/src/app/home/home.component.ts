@@ -19,7 +19,12 @@ export class HomeComponent implements OnInit {
   onSubmit() {
     this.jobDone = false;
     this.apiService.submitImage(this.imageUrl)
-      .subscribe(response => this.jobDone = true);
+      .subscribe(response => this.submitText(response['_body']));
+  }
+
+  submitText(text: string) {
+    console.log(text);
+    this.jobDone = true;
   }
 
 }
