@@ -13,15 +13,11 @@ def submitImageText(image_url):
     }
 
     body = {'url': image_url}
-
     params = {'handwriting' : 'false'}
-
-    response = requests.request('POST', endpoint + '/RecognizeText', json=body, data=None, headers=headers, params=params)
-
-    parsed = json.loads(response.text)
     
+    response = requests.request('POST', endpoint + '/RecognizeText', json=body, data=None, headers=headers, params=params)
+    parsed = json.loads(response.text)
     regions = parsed['regions']
-
     full_text = ''
 
     for region in regions:
@@ -38,9 +34,7 @@ def call_translate(content):
     subscriptionKey = ''
 
     host = 'api.cognitive.microsofttranslator.com'
-    
     path = '/translate?api-version=3.0'
-
     params = "&to=pt-br"
 
     headers = {
@@ -68,6 +62,7 @@ def read_translate_say(image_url):
     extracted_text = submitImageText(image_url)
     print('Extracted the Text. Translating...')
     text = translate(extracted_text)
+    
     return text
 
 if __name__ == '__main__':
