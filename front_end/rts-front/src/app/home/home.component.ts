@@ -9,23 +9,28 @@ import { ApiService } from '../api.service';
 })
 export class HomeComponent implements OnInit {
   public imageUrl: string;
-  public jobDone: boolean;
+  public statusMessage: string;
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.imageUrl = '';
-    this.jobDone = true;
+    this.statusMessage = '';
   }
 
   onSubmit() {
-    this.jobDone = false;
+    this.statusMessage = 'Loading. Please wait';
     this.apiService.submitImage(this.imageUrl)
-      .subscribe(response => this.submitText(response['_body']));
+      .subscribe(response => this.submitText(response));
   }
 
-  submitText(text: string) {
+  submitText(response: object) {
+    const text = response['_body'];
     console.log(text);
-    this.jobDone = true;
+    if (response['status'] !== 200) {
+      this.statusMessage = 'We had a problem during the process. Please try again.';
+      return;
+    }
+    this.statusMessage = '';
     const msg  = new SpeechSynthesisUtterance(text);
     msg.volume = 1; // 0 to 1
     msg.rate = 1.5; // 0.1 to 10
