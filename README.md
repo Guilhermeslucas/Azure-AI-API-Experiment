@@ -50,11 +50,22 @@ pip3 install -r requirements.txt
 python3 server.py
 ```
 
-**2. Running Front End:** Just run the angular app, after installing dependencies with npm and it should be fine:
+**2. Running Front End:** Just run the angular app, inside the ```front_end/rts_frontend``` folder after installing dependencies with npm and it should be fine:
 
 ``` shell
 npm install
 ng serve
 ```
 
+The default path to check the application is **localhost:4200**.
+
 ### Docker
+
+Running the application is really simple with Docker. There are just two docker commands you have to run:
+
+``` shell
+docker run -d -p 5000:5000 guilhermeslucas/rts-backend
+docker run -f -p 4200:80 guilhermeslucas/nginx-angular
+```
+
+Feel free to fork and send me a pull request.
