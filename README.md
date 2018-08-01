@@ -35,8 +35,26 @@ and easier. The images I used are listed below:
 
 ## Running
 
-There are several ways to run the app. I'll describe below the path to run native or with Docker.
+There are several ways to run the app. I'll describe below the path to run native or with Docker. The two steps needs keys for the two API's mentioned before. You must insert the Vison API
+[here](https://github.com/Guilhermeslucas/Azure-AI-API-Experiment/blob/master/back_end/reader.py#L8)
+and abd the Translate API [here](https://github.com/Guilhermeslucas/Azure-AI-API-Experiment/blob/master/back_end/reader.py#L34).
 
 ### Native
+
+To run the application in a native way, you have to start the Front and the Back End Applications. In order to make this easier, you can run the following commands inside the ```back_end``` folder:
+
+**1. Running Back End:** In order to do this, install dependencies with pip, and then run the server, like this:
+
+``` shell
+pip3 install -r requirements.txt
+python3 server.py
+```
+
+**2. Running Front End:** Just run the angular app, after installing dependencies with npm and it should be fine:
+
+``` shell
+npm install
+ng serve
+```
 
 ### Docker
