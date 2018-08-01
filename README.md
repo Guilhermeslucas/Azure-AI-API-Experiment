@@ -1,6 +1,6 @@
 # Read -> Translate -> Say
 
-Project in order to use some Cognitive Services API's from Azure Cloud other deployment tools.
+Project created in order to use some Cognitive Services API's from Azure Cloud other deployment tools.
 
 ## Architecture
 
@@ -25,7 +25,7 @@ In order to make this whole project works, I'm using two API's that are part of 
 The first one is the [Vision API](https://azure.microsoft.com/pt-br/services/cognitive-services/computer-vision/#text). This is the one to use the OCR methods to extract the text
 from the image. The other one, is [Translator API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/). This is used for translate the text Vision API extracted for us.
 
-### Deployment
+## Deployment
 
 As mentioned before, the deployment was made using several services of [Microsoft Azure](https://azure.microsoft.com/en-us/). Besides, I'm using Docker Containers for making deploys smaller
 and easier. The images I used are listed below:
@@ -35,6 +35,8 @@ and easier. The images I used are listed below:
 
 ## Running
 
-### Locally
+There are several ways to run the app. I'll describe below the path to run native or with Docker.
 
-### Microsft Azure
+### Native
+
+### Docker
