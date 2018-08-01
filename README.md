@@ -4,7 +4,7 @@ Project created in order to use some Cognitive Services API's from Azure Cloud o
 
 ## Architecture
 
-For the better explaining of the application, I'll describe each in divided sections below. Both the back and the front end
+For the better explaining of the application, I'll describe each one in divided sections below. Both the back and the front end
 were deployed inside [Azure Web App for Containers](https://azure.microsoft.com/en-us/services/app-service/containers/) with [Docker](https://www.docker.com/).
 
 ![General Arch](imgs/architechture.jpg)
@@ -43,9 +43,9 @@ and abd the Translate API [here](https://github.com/Guilhermeslucas/Azure-AI-API
 
 ### Native
 
-To run the application in a native way, you have to start the Front and the Back End Applications. In order to make this easier, you can run the following commands inside the ```back_end``` folder:
+To run the application in a native way, you have to start the Front and the Back End Applications. You can run the following commands:
 
-**1. Running Back End:** In order to do this, install dependencies with pip, and then run the server, like this:
+**1. Running Back End:** In order to do this, go to ```back_end``` folder and install dependencies with pip, and then run the server, like this:
 
 ``` shell
 pip3 install -r requirements.txt
