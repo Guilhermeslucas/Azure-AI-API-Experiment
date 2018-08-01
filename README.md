@@ -7,6 +7,8 @@ Project created in order to use some Cognitive Services API's from Azure Cloud o
 For the better explaining of the application, I'll describe each in divided sections below. Both the back and the front end
 were deployed inside [Azure Web App for Containers](https://azure.microsoft.com/en-us/services/app-service/containers/) with [Docker](https://www.docker.com/).
 
+![General Arch](imgs/architechture.jpg)
+
 ### Front End
 
 For the development of the front end, we used a famous web development framework called [Angular](https://angular.io/), which
