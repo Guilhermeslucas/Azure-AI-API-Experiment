@@ -16,6 +16,10 @@ def process():
     request_data = request.get_json(force=True)
     text = read_translate_say(request_data['url'])
     return text
+
+@app.route("/healthz") 
+def health_check(): 
+	return "HealthCheck Endpoint! Everything looks good!" 
  
 if __name__ == "__main__": 
 	app.run(host='0.0.0.0', port=5000)
