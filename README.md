@@ -4,7 +4,8 @@ Project in order to use some Cognitive Services API's from Azure Cloud other dep
 
 ## Architecture
 
-For the better explaining of the application, I'll describe each in divided sections below. ADD CONTAINER APP SECTION HERE
+For the better explaining of the application, I'll describe each in divided sections below. Both the back and the front end
+were deployed inside [Azure Web App for Containers](https://azure.microsoft.com/en-us/services/app-service/containers/) with [Docker](https://www.docker.com/).
 
 ### Front End
 
@@ -22,9 +23,15 @@ to put things up and running and can get as huge and powerful as you want.
 
 In order to make this whole project works, I'm using two API's that are part of the Azure [Cognitive Services](https://azure.microsoft.com/en-us/services/cognitive-services/).
 The first one is the [Vision API](https://azure.microsoft.com/pt-br/services/cognitive-services/computer-vision/#text). This is the one to use the OCR methods to extract the text
-from the image. The other one, is [Translator API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/). This is used for translate the text Vision aPI extracted for us. 
+from the image. The other one, is [Translator API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/). This is used for translate the text Vision API extracted for us.
 
 ### Deployment
+
+As mentioned before, the deployment was made using several services of [Microsoft Azure](https://azure.microsoft.com/en-us/). Besides, I'm using Docker Containers for making deploys smaller
+and easier. The images I used are listed below:
+
+- [Front End](https://hub.docker.com/r/guilhermeslucas/nginx-angular/) - Alpine image with the Angular app and  [Nginx](https://www.nginx.com/) for serving the application.
+- [Back end](https://hub.docker.com/r/guilhermeslucas/rts-backend/) - Python base image with flask for the server and communication with API's.
 
 ## Running
 
