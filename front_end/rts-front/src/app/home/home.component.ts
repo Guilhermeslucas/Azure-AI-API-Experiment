@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from '../api.service';
 
 
@@ -8,6 +8,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('video') public video: ElementRef;
   public imageUrl: string;
   public statusMessage: string;
   constructor(private apiService: ApiService) { }
@@ -15,6 +16,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.imageUrl = '';
     this.statusMessage = '';
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  public ngAfterViewInit() {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+            this.video.nativeElement.src = window.URL.createObjectURL(stream);
+            this.video.nativeElement.play();
+        });
+    }
   }
 
   onSubmit() {

@@ -18,16 +18,20 @@
 <h1 class="text-center">
   Read > Translate > Say
 </h1>
+<div id="app">
+  <div><video #video id="video" width="640" height="480" autoplay style="margin-left: 220px"></video></div>
+  <div><button id="snap" class="btn btn-primary" style="margin-left: 460px" (click)="capture()">Submit Picture</button></div>
+</div>
 <form>
     <div class="form-group">
-      <label for="exampleInputEmail1">Image Url</label>
-      <input  class="form-control" id="imputBox" aria-describedby="inputBox" placeholder="Enter Url" [(ngModel)]="imageUrl"  [ngModelOptions]="{standalone: true}">
-      <small id="inputBox" class="form-text text-muted">Put here the url you want to process.</small>
+      <label for="exampleInputEmail1"></label>
+      <input  class="form-control" id="imputBox" aria-describedby="inputBox" placeholder="Enter Image Url" [(ngModel)]="imageUrl"  [ngModelOptions]="{standalone: true}">
+      <small id="inputBox" class="form-text text-muted">Put here the url you want to process (If not taking the picture).</small>
     </div>
     <div class="status-message">
       {{ statusMessage }}
   </div>
-    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    <button type="submit" class="btn btn-primary" style="margin-left: 490px" (click)="onSubmit()">Submit</button>
   </form>
 </body>
 </div>
