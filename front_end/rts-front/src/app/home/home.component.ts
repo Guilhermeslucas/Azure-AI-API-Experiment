@@ -9,6 +9,8 @@ import { ApiService } from '../api.service';
 })
 export class HomeComponent implements OnInit {
   @ViewChild('video') public video: ElementRef;
+  @ViewChild('canvas') public canvas: ElementRef;
+  public captures: Array<any>;
   public imageUrl: string;
   public statusMessage: string;
   constructor(private apiService: ApiService) { }
@@ -16,6 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.imageUrl = '';
     this.statusMessage = '';
+    this.captures = [];
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -49,5 +52,10 @@ export class HomeComponent implements OnInit {
     msg.lang = 'pt-BR';
     (<any>window).speechSynthesis.speak(msg);
   }
+
+  public capture() {
+    this.captures.push(this.canvas.nativeElement.toDataURL('image/png'));
+    console.log(this.captures[0]);
+}
 
 }

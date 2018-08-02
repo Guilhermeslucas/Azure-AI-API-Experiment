@@ -20,7 +20,7 @@
 </h1>
 <div id="app">
   <div><video #video id="video" width="640" height="480" autoplay style="margin-left: 220px"></video></div>
-  <div><button id="snap" class="btn btn-primary" style="margin-left: 460px" (click)="capture()">Submit Picture</button></div>
+  <div><button id="snap" class="btn btn-primary" style="margin-left: 475px" (click)="capture()">Submit Picture</button></div>
 </div>
 <form>
     <div class="form-group">
@@ -31,7 +31,8 @@
     <div class="status-message">
       {{ statusMessage }}
   </div>
-    <button type="submit" class="btn btn-primary" style="margin-left: 490px" (click)="onSubmit()">Submit</button>
+    <button type="submit" class="btn btn-primary" style="margin-left: 490px" (click)="onSubmit()">Submit Url</button>
   </form>
 </body>
+<canvas #canvas id="canvas"></canvas>
 </div>
