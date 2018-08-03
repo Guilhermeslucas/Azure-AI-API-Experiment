@@ -14,8 +14,8 @@ export class ApiService {
     this.data = {};
    }
 
-  public submitImage(image_link: string): Observable<any> {
-    this.data['url'] = image_link;
+  public submitImage(image: any): Observable<any> {
+    this.data['image'] = image;
     return this.http
     .post(API_URL + SUBMIT_ENDPOINT, this.data)
     .map(response => {

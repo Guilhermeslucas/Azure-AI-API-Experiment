@@ -2,21 +2,25 @@ import requests, json, http.client, urllib.parse, uuid
 from xml.etree import ElementTree
 import pygame
 import os
+from base64 import b64encode
+import base64
 
-def submitImageText(image_url):
+
+def submitImageText(image):
     endpoint = 'https://westus.api.cognitive.microsoft.com/vision/v1.0'  
-    api_key = ''
+    api_key = 'cc86c47161ec4b22bb60a6f6eab44bc6'
 
     headers = { 
-        'Content-Type': 'application/json',  
+        'Content-Type': 'multipart/form-data',  
         'Ocp-Apim-Subscription-Key': api_key,  
     }
-
-    body = {'url': image_url}
+    print(image)
+    imgdata = base64.b64decode(str(image))
     params = {'handwriting' : 'false'}
     
-    response = requests.request('POST', endpoint + '/RecognizeText', json=body, data=None, headers=headers, params=params)
+    response = requests.request('POST', endpoint + '/RecognizeText', json=None, data=imgdata, headers=headers, params=params)
     parsed = json.loads(response.text)
+    print(parsed)
     regions = parsed['regions']
     full_text = ''
 
@@ -31,7 +35,7 @@ def submitImageText(image_url):
 
 
 def call_translate(content):
-    subscriptionKey = ''
+    subscriptionKey = '93d49c0a883644dba40a12f09204f295'
 
     host = 'api.cognitive.microsofttranslator.com'
     path = '/translate?api-version=3.0'
@@ -69,3 +73,4 @@ if __name__ == '__main__':
     extracted_text = submitImageText('http://fabricjs.com/article_assets/2_7.png')
     print('Extracted the Text. Translating...')
     text = translate(extracted_text)
+    print(text)

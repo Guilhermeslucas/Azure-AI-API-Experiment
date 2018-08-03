@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.statusMessage = 'Loading. Please wait';
-    this.apiService.submitImage(this.imageUrl)
+    this.apiService.submitImage(this.captures[0])
       .subscribe(response => this.submitText(response));
   }
 
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
 
   public capture() {
     this.captures.push(this.canvas.nativeElement.toDataURL('image/png'));
-    console.log(this.captures[0]);
-}
+    console.log(this.captures);
+  }
 
 }

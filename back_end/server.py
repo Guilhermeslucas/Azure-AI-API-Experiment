@@ -14,7 +14,7 @@ def hello():
 @app.route("/api/submit", methods=['POST']) 
 def process():
     request_data = request.get_json(force=True)
-    text = read_translate_say(request_data['url'])
+    text = read_translate_say(request_data['image'])
     return text
 
 @app.route("/healthz") 
